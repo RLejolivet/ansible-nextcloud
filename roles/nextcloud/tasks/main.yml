@@ -1,0 +1,102 @@
+---
+
+################################################################################
+# Directory structure
+################################################################################
+- name: structure_data_dir
+  file: state=directory         path="{{ data_root_dir }}" #"
+
+- name: structure_data_nextcloud_dir
+  file: state=directory         path="{{ data_nextcloud_dir }}" #"
+
+- name: structure_data_nextcloud_apps_dir
+  file: state=directory         path="{{ data_nextcloud_apps_dir }}" #"
+
+- name: structure_data_nextcloud_config_dir
+  file: state=directory         path="{{ data_nextcloud_config_dir }}" #"
+
+- name: structure_data_nextcloud_data_dir
+  file: state=directory         path="{{ data_nextcloud_data_dir }}" #"
+
+- name: structure_data_mysql_dir
+  file: state=directory         path="{{ data_mysql_dir }}" #"
+
+- name: structure_data_mysql_config_dir
+  file: state=directory         path="{{ data_mysql_config_dir }}" #"
+
+- name: structure_data_mysql_data_dir
+  file: state=directory         path="{{ data_mysql_data_dir }}" #"
+
+- name: structure_data_nginx_dir
+  file: state=directory         path="{{ data_nginx_dir }}" #"
+
+- name: structure_data_nginx_config_dir
+  file: state=directory         path="{{ data_nginx_config_dir }}" #"
+
+- name: structure_data_nginx_log_dir
+  file: state=directory         path="{{ data_nginx_log_dir }}" #"
+
+- name: structure_data_letsencrypt_dir
+  file: state=directory         path="{{ data_letsencrypt_dir }}" #"
+
+- name: structure_data_letsencrypt_build_dir
+  file: state=directory         path="{{ data_letsencrypt_build_dir }}" #"
+
+- name: structure_data_letsencrypt_certs_dir
+  file: state=directory         path="{{ data_letsencrypt_certs_dir }}" #"
+
+- name: structure_data_letsencrypt_webroot_dir
+  file: state=directory         path="{{ data_letsencrypt_webroot_dir }}" #"
+
+################################################################################
+# Docker images
+################################################################################
+- name: docker_pull_nextcloud_image
+  docker_image:
+          pull=yes
+          name=wonderfall/nextcloud
+          tag={{ nextcloud_version }}
+
+- name: docker_pull_mariadb_image
+  docker_image:
+          pull=yes
+          name=mariadb
+          tag={{ mariadb_version }}
+
+- name: docker_pull_nginx_image
+  docker_image:
+          pull=yes
+          name=nginx
+          tag={{ nginx_version }}
+
+- name: copy_letsencrypt_dockerfile
+  copy: 
+          src=docker-letsencrypt-webroot/Dockerfile
+          dest=/data/letsencrypt/build/Dockerfile
+
+- name: copy_letsencrypt_script
+  copy: 
+          src=docker-letsencrypt-webroot/run.sh
+          dest=/data/letsencrypt/build/run.sh
+          mode=0755
+
+- name: docker_compile_letsencrypt_image
+  docker_image:
+          state=present
+          name=letsencrypt-webroot
+          path=/data/letsencrypt/build
+
+################################################################################
+# Configuration files
+################################################################################
+- name: copy_mysql_conf
+  copy:
+          src=mysql/my.cnf
+          dest="{{ data_mysql_config_dir }}/my.cnf" #"
+
+- name: copy_nginx_conf
+  template:
+          src=nginx/reverse-proxy-nextcloud.conf
+          dest="{{ data_nginx_config_dir }}/reverse-proxy-nextcloud.conf" #"
+
+
