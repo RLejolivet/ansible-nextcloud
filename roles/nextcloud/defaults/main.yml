@@ -1,21 +1,28 @@
 ---
+#server_name: example.com               # Define this in the playbook!
+
 nextcloud_version: 11.0
 mariadb_version: 10.1
 nginx_version: 1.11
 
-data_root_dir: /data
-data_nextcloud_dir: /data/nextcloud
-data_nextcloud_apps_dir: /data/nextcloud/apps
-data_nextcloud_config_dir: /data/nextcloud/config
-data_nextcloud_data_dir: /data/nextcloud/data
-data_mysql_dir: /data/mysql
-data_mysql_config_dir: /data/mysql/conf.d
-data_mysql_data_dir: /data/mysql/data
-data_nginx_dir: /data/nginx
-data_nginx_config_dir: /data/nginx/conf.d
-data_nginx_log_dir: /data/nginx/log
-data_letsencrypt_dir: /data/letsencrypt
-data_letsencrypt_build_dir: /data/letsencrypt/build
-data_letsencrypt_certs_dir: /data/letsencrypt/certs
-data_letsencrypt_webroot_dir: /data/letsencrypt/www
+host_data_root_dir: /data
+host_data_nextcloud_dir: /data/nextcloud
+host_data_nextcloud_apps_dir: /data/nextcloud/apps
+host_data_nextcloud_config_dir: /data/nextcloud/config
+host_data_nextcloud_data_dir: /data/nextcloud/data
+host_data_mysql_dir: /data/mysql
+host_data_mysql_config_dir: /data/mysql/conf.d
+host_data_mysql_data_dir: /data/mysql/data
+host_data_nginx_dir: /data/nginx
+host_data_nginx_config_dir: /data/nginx/conf.d
+host_data_nginx_log_dir: /data/nginx/log
+host_data_letsencrypt_dir: /data/letsencrypt
+host_data_letsencrypt_build_dir: /data/letsencrypt/build
+host_data_letsencrypt_certs_dir: /data/letsencrypt/certs
+host_data_letsencrypt_webroot_dir: /data/letsencrypt/www
+
+container_name_nextcloud: nextcloud
+container_name_mariadb: nextcloud-db
+container_name_nginx: nextcloud-reverse-proxy
+container_name_letsencrypt: letsencrypt
 

@@ -4,49 +4,49 @@
 # Directory structure
 ################################################################################
 - name: structure_data_dir
-  file: state=directory         path="{{ data_root_dir }}" #"
+  file: state=directory         path="{{ host_data_root_dir }}" #"
 
 - name: structure_data_nextcloud_dir
-  file: state=directory         path="{{ data_nextcloud_dir }}" #"
+  file: state=directory         path="{{ host_data_nextcloud_dir }}" #"
 
 - name: structure_data_nextcloud_apps_dir
-  file: state=directory         path="{{ data_nextcloud_apps_dir }}" #"
+  file: state=directory         path="{{ host_data_nextcloud_apps_dir }}" #"
 
 - name: structure_data_nextcloud_config_dir
-  file: state=directory         path="{{ data_nextcloud_config_dir }}" #"
+  file: state=directory         path="{{ host_data_nextcloud_config_dir }}" #"
 
 - name: structure_data_nextcloud_data_dir
-  file: state=directory         path="{{ data_nextcloud_data_dir }}" #"
+  file: state=directory         path="{{ host_data_nextcloud_data_dir }}" #"
 
 - name: structure_data_mysql_dir
-  file: state=directory         path="{{ data_mysql_dir }}" #"
+  file: state=directory         path="{{ host_data_mysql_dir }}" #"
 
 - name: structure_data_mysql_config_dir
-  file: state=directory         path="{{ data_mysql_config_dir }}" #"
+  file: state=directory         path="{{ host_data_mysql_config_dir }}" #"
 
 - name: structure_data_mysql_data_dir
-  file: state=directory         path="{{ data_mysql_data_dir }}" #"
+  file: state=directory         path="{{ host_data_mysql_data_dir }}" #"
 
 - name: structure_data_nginx_dir
-  file: state=directory         path="{{ data_nginx_dir }}" #"
+  file: state=directory         path="{{ host_data_nginx_dir }}" #"
 
 - name: structure_data_nginx_config_dir
-  file: state=directory         path="{{ data_nginx_config_dir }}" #"
+  file: state=directory         path="{{ host_data_nginx_config_dir }}" #"
 
 - name: structure_data_nginx_log_dir
-  file: state=directory         path="{{ data_nginx_log_dir }}" #"
+  file: state=directory         path="{{ host_data_nginx_log_dir }}" #"
 
 - name: structure_data_letsencrypt_dir
-  file: state=directory         path="{{ data_letsencrypt_dir }}" #"
+  file: state=directory         path="{{ host_data_letsencrypt_dir }}" #"
 
 - name: structure_data_letsencrypt_build_dir
-  file: state=directory         path="{{ data_letsencrypt_build_dir }}" #"
+  file: state=directory         path="{{ host_data_letsencrypt_build_dir }}" #"
 
 - name: structure_data_letsencrypt_certs_dir
-  file: state=directory         path="{{ data_letsencrypt_certs_dir }}" #"
+  file: state=directory         path="{{ host_data_letsencrypt_certs_dir }}" #"
 
 - name: structure_data_letsencrypt_webroot_dir
-  file: state=directory         path="{{ data_letsencrypt_webroot_dir }}" #"
+  file: state=directory         path="{{ host_data_letsencrypt_webroot_dir }}" #"
 
 ################################################################################
 # Docker images
@@ -92,11 +92,11 @@
 - name: copy_mysql_conf
   copy:
           src=mysql/my.cnf
-          dest="{{ data_mysql_config_dir }}/my.cnf" #"
+          dest="{{ host_data_mysql_config_dir }}/my.cnf" #"
 
 - name: copy_nginx_conf
   template:
           src=nginx/reverse-proxy-nextcloud.conf
-          dest="{{ data_nginx_config_dir }}/reverse-proxy-nextcloud.conf" #"
+          dest="{{ host_data_nginx_config_dir }}/reverse-proxy-nextcloud.conf" #"
 
 
