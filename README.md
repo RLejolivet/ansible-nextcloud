@@ -12,6 +12,7 @@ Assumes the target machine does not have any web server.
 Any firewall should open ports 80 (for Let's Encrypt verification process) and 443 (HTTPS access to the Nextcloud instance)
 
 Current installation steps:
+
 1. ```apt-get install python python-docker docker.io```
 2. Run ansible playbook using this role
 3. ```docker run -d --name nextcloud-db -e MYSQL_ROOT_PASSWORD=supersecretpassword -v /data/mysql/data:/var/lib/mysql -v /data/mysql/conf.d:/etc/mysql/conf.d -e MYSQL_DATABASE=nextcloud -e MYSQL_USER=nextcloud -e MYSQL_PASSWORD=supersecretdatabasepassword mariadb:10.1```
