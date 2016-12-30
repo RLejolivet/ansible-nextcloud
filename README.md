@@ -23,3 +23,13 @@ Current installation steps:
 7. Add the server name to the "trusted_domaines" array in /data/nextcloud/config/config.php
 8. docker stop nextcloud-php
 9. docker start nextcloud-php
+
+Auto cert renewal:
+
+1. Create a script that runs :
+
+    docker run --rm ... letsencrypt-webroot
+    docker stop nextcloud-proxy
+    docker start nextcloud-proxy
+
+2. Put that script into a cron that runs every week
