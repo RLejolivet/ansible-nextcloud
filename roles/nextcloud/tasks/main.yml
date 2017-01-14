@@ -70,12 +70,12 @@
           tag={{ nginx_version }}
 
 - name: copy_letsencrypt_dockerfile
-  copy: 
+  copy:
           src=docker-letsencrypt-webroot/Dockerfile
           dest=/data/letsencrypt/build/Dockerfile
 
 - name: copy_letsencrypt_script
-  copy: 
+  copy:
           src=docker-letsencrypt-webroot/run.sh
           dest=/data/letsencrypt/build/run.sh
           mode=0755
@@ -94,9 +94,14 @@
           src=mysql/my.cnf
           dest="{{ host_data_mysql_config_dir }}/my.cnf" #"
 
-- name: copy_nginx_conf
+- name: copy_nginx_nextcloud_conf
   template:
           src=nginx/reverse-proxy-nextcloud.conf
           dest="{{ host_data_nginx_config_dir }}/reverse-proxy-nextcloud.conf" #"
+
+- name: copy_nginx_office_conf
+  template:
+          src=nginx/reverse-proxy-office.conf
+          dest="{{ host_data_nginx_config_dir }}/reverse-proxy-office.conf" #"
 
 
