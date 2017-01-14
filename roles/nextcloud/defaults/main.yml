@@ -1,5 +1,6 @@
 ---
 #server_name: example.com               # Define this in the playbook!
+#office_server_name: office.example.com # Define this as well!
 
 nextcloud_version: 11.0
 mariadb_version: 10.1
@@ -21,8 +22,8 @@ host_data_letsencrypt_build_dir: /data/letsencrypt/build
 host_data_letsencrypt_certs_dir: /data/letsencrypt/certs
 host_data_letsencrypt_webroot_dir: /data/letsencrypt/www
 
-container_name_nextcloud: nextcloud
+container_name_nextcloud: nextcloud-php
 container_name_mariadb: nextcloud-db
-container_name_nginx: nextcloud-reverse-proxy
+container_name_nginx: nextcloud-proxy
 container_name_letsencrypt: letsencrypt
-
+container_name_office: nextcloud-office
